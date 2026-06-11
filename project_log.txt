@@ -1,0 +1,67 @@
+====================================================================
+DKA TUBES: FINAL PROJECT BATTLE PLAN
+DEADLINE: JUNE 15, 2026
+TOPIC: Stroke Risk Assessment (Mamdani vs Sugeno + DL + Streamlit)
+====================================================================
+
+PHASE 1: FOUNDATION & DATA PREP (FRIDAY, JUNE 12)
+[  ] 1.1 Folder Setup: Create repo with /data, /notebooks, /app, /report.
+     [Assignee: ____________]
+[  ] 1.2 Data Cleaning: Load 'healthcare-dataset-stroke-data.csv'. 
+     - Handle missing BMI values (e.g., fill with mean).
+     - Map text to numbers (e.g., gender, smoking status, residence).
+     [Assignee: ____________]
+[  ] 1.3 Core Math Tools: Write the custom `trimf()` and `trapmf()` python 
+     functions from scratch (NO LIBRARIES).
+     [Assignee: ____________]
+
+PHASE 2: THE FUZZY ENGINE (SATURDAY, JUNE 13)
+*Note: Split these tasks immediately between team members.*
+[  ] 2.1 Rule Base Creation: Write down the 15+ IF-THEN rules on paper 
+     or in a shared doc so the coders can translate them into logic.
+     [Assignee: ____________]
+[  ] 2.2 Mamdani Implementation:
+     - Fuzzify the 5 inputs for all 5000+ rows.
+     - Apply Inference (MIN for AND rules, MAX to aggregate).
+     - Defuzzify using the Centroid method (calculating center of gravity).
+     [Assignee: ____________]
+[  ] 2.3 Sugeno Implementation:
+     - Use the same Fuzzified inputs.
+     - Apply Inference (MIN for AND rules).
+     - Defuzzify using Weighted Average (outputs are constants/linear).
+     [Assignee: ____________]
+[  ] 2.4 Output Generation: Save the results! Your dataframe should now 
+     have `Mamdani_Risk_Score` and `Sugeno_Risk_Score` columns.
+
+PHASE 3: EVALUATION & BONUS ROUND (+25 PTS) (SUNDAY, JUNE 14)
+[  ] 3.1 Evaluation (Required): Calculate MSE (Mean Squared Error) or 
+     MAE for Mamdani vs Sugeno against the ground truth 'stroke' column.
+     [Assignee: ____________]
+[  ] 3.2 Deep Learning Bonus (+20): 
+     - Build a simple 3-layer Neural Network (Keras or PyTorch).
+     - Inputs: The 5 original features + the new `Mamdani_Risk_Score`.
+     - Output: Binary Stroke Prediction.
+     - Train and document accuracy improvement.
+     [Assignee: ____________]
+[  ] 3.3 Streamlit Bonus (+5): 
+     - Create `app.py`. 
+     - Add 5 sliders/dropdowns for user input.
+     - Run those inputs through your custom fuzzy functions and display 
+       the Stroke Risk % on the web page.
+     [Assignee: ____________]
+
+PHASE 4: REPORT & SUBMISSION (MONDAY, JUNE 15 - MORNING)
+[  ] 4.1 Report Writing (.pdf):
+     - Detail the 15 rules and membership functions.
+     - Show the comparison table (Mamdani vs Sugeno).
+     - Discuss advantages/disadvantages (e.g., Sugeno is faster to compute, 
+       Mamdani is more intuitive).
+     [Assignee: ____________]
+[  ] 4.2 Source Code Clean-up (.ipynb): Ensure all code runs top-to-bottom 
+     without errors. Add comments proving you didn't use fuzzy libraries.
+     [Assignee: ____________]
+[  ] 4.3 Final Submission: Upload the .pdf and .ipynb to the portal.
+     [Assignee: ____________]
+[  ] 4.4 Q&A Prep: Review the code together. The Q&A is 15 minutes, 
+     all members must attend, and the lecturer WILL ask who coded what.
+====================================================================
