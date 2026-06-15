@@ -4,16 +4,13 @@ DEADLINE: JUNE 15, 2026
 TOPIC: Stroke Risk Assessment (Mamdani vs Sugeno + DL + Streamlit)
 ====================================================================
 
-PHASE 1: FOUNDATION & DATA PREP (FRIDAY, JUNE 12)
+PHASE 1: FOUNDATION & DATA PREP
 [ v] 1.1 Folder Setup: Create repo with /data, /notebooks, /app, /report.
-     [Assignee: Axella]
-[  ] 1.2 Data Cleaning: Load 'healthcare-dataset-stroke-data.csv'. 
+[ v] 1.2 Data Cleaning: Load 'healthcare-dataset-stroke-data.csv'. 
      - Handle missing BMI values (e.g., fill with mean).
      - Map text to numbers (e.g., gender, smoking status, residence).
-     [Assignee: ____________]
-[  ] 1.3 Core Math Tools: Write the custom `trimf()` and `trapmf()` python 
+[ v] 1.3 Core Math Tools: Write the custom `trimf()` and `trapmf()` python 
      functions from scratch (NO LIBRARIES).
-     [Assignee: ____________]
 
 PHASE 2: THE FUZZY ENGINE (SATURDAY, JUNE 13)
 *Note: Split these tasks immediately between team members.*
@@ -21,7 +18,7 @@ PHASE 2: THE FUZZY ENGINE (SATURDAY, JUNE 13)
      or in a shared doc so the coders can translate them into logic.
      [Assignee: ____________]
 [  ] 2.2 Mamdani Implementation:
-     - Fuzzify the 5 inputs for all 5000+ rows.
+     - Fuzzify the 5 inputs (Age, Average Glucose Level, BMI, Hypertension, Smoking Status) for all 5000+ rows.
      - Apply Inference (MIN for AND rules, MAX to aggregate).
      - Defuzzify using the Centroid method (calculating center of gravity).
      [Assignee: ____________]
