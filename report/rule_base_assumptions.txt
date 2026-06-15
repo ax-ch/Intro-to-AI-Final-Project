@@ -1,0 +1,42 @@
+====================================================================
+PROJECT NOTES: FUZZY LOGIC RULE BASE ASSUMPTIONS
+Topic: Stroke Risk Assessment
+Target Output: Low, Medium, High Risk
+====================================================================
+
+1. CORE VARIABLE ASSUMPTIONS (HEURISTIC BASELINE)
+This fuzzy inference system relies on generalized medical consensus regarding cardiovascular and stroke risk factors. The baseline rules operate on the following isolated assumptions:
+* Age: Stroke risk compounding correlates heavily with age. 'Senior' is a baseline multiplier for risk, while 'Young' acts as a dampener.
+* Hypertension (HT): Chronic high blood pressure is a leading cause of strokes. 'HT_Present' is treated as a primary risk accelerator.
+* Glucose Level: High glucose indicates prediabetes or diabetes, which damages blood vessels over time. 'Diabetic' is a severe risk factor.
+* BMI: Obesity places mechanical and metabolic stress on the heart. 'Obese' compounds other risk factors, while 'Low/Normal' mitigates them.
+* Smoking: Tobacco damages blood vessels and raises blood pressure. 'High' (active smoker) acts as a catalyst when combined with Age or HT.
+
+2. CATEGORICAL LOGIC & RULE BREAKDOWN
+
+--- HIGH RISK ASSUMPTIONS ---
+Logic: High risk is assigned when a primary risk accelerator (Hypertension or Diabetes) is combined with an age-based vulnerability or a compounding lifestyle factor (Obesity, Heavy Smoking).
+
+* Rule 1 (Senior + HT Present): Advanced age combined with high blood pressure is the most standard indicator of imminent stroke risk.
+* Rule 2 (Diabetic + Obese): Represents severe metabolic syndrome. The compounding vascular damage from diabetes combined with obesity warrants a high warning.
+* Rule 3 (Senior + Smoke High + HT Present): A "triple threat" scenario. Advanced age, active arterial damage from smoking, and high blood pressure guarantee high risk.
+* Rule 4 (Diabetic + HT Present): Combines two of the most destructive factors for blood vessel integrity (glucose damage + pressure damage).
+* Rule 5 (Middle Age + Smoke High + HT Present): Even without being a 'Senior', the combination of active heavy smoking and hypertension creates premature high risk.
+
+--- MEDIUM RISK ASSUMPTIONS ---
+Logic: Medium risk is assigned when there is a mix of positive and negative factors, or when an individual possesses moderate, non-critical risk markers that require monitoring but are not immediately life-threatening alone.
+
+* Rule 6 (Middle Age + HT Absent + Smoke Mod): The patient is aging and has a moderate smoking history, but normal blood pressure keeps the risk from escalating to high.
+* Rule 7 (Senior + Glucose Normal + HT Absent): The patient is elderly (inherent risk), but excellent metabolic and cardiovascular markers downgrade the threat to medium.
+* Rule 8 (Overweight + Smoke Mod): Two lifestyle warning signs are present, indicating a trajectory toward high risk if not addressed.
+* Rule 9 (Middle Age + Prediabetic): A classic warning stage. The body is beginning to show metabolic stress, but severe damage has not yet occurred.
+* Rule 10 (Young + HT Present): Youth protects the vascular system, but premature hypertension is highly abnormal and flags a medium risk for early intervention.
+
+--- LOW RISK ASSUMPTIONS ---
+Logic: Low risk is assigned when age is not a primary factor and metabolic/cardiovascular health indicators are firmly in the normal/absent ranges.
+
+* Rule 11 (Young + HT Absent): The optimal healthy baseline. Youth combined with normal blood pressure indicates highly resilient blood vessels.
+* Rule 12 (Glucose Normal + BMI Low): Represents excellent metabolic health, drastically lowering the baseline probability of a stroke.
+* Rule 13 (Young + Smoke Low): A young individual with no history of smoking lacks the primary triggers for arterial damage.
+* Rule 14 (Middle Age + Glucose Normal + HT Absent): Even as the patient ages, the absence of diabetes and hypertension keeps their risk profile low.
+* Rule 15 (Smoke Low + HT Absent + BMI Low): The "perfect lifestyle" rule. Regardless of other factors, avoiding smoking, maintaining low weight, and having normal blood pressure ensures a minimal risk profile.
