@@ -1,6 +1,6 @@
 ====================================================================
 DKA TUBES: FINAL PROJECT BATTLE PLAN
-DEADLINE: JUNE 15, 2026
+DEADLINE: JUNE 15, 2026 (TONIGHT)
 TOPIC: Stroke Risk Assessment (Mamdani vs Sugeno + DL + Streamlit)
 ====================================================================
 
@@ -12,28 +12,24 @@ PHASE 1: FOUNDATION & DATA PREP
 [ v] 1.3 Core Math Tools: Write the custom `trimf()` and `trapmf()` python 
      functions from scratch (NO LIBRARIES).
 
-PHASE 2: THE FUZZY ENGINE (SATURDAY, JUNE 13)
-*Note: Split these tasks immediately between team members.*
-[  ] 2.1 Rule Base Creation: Write down the 15+ IF-THEN rules on paper 
-     or in a shared doc so the coders can translate them into logic.
-     [Assignee: ____________]
-[  ] 2.2 Mamdani Implementation:
-     - Fuzzify the 5 inputs (Age, Average Glucose Level, BMI, Hypertension, Smoking Status) for all 5000+ rows.
-     - Apply Inference (MIN for AND rules, MAX to aggregate).
-     - Defuzzify using the Centroid method (calculating center of gravity).
-     [Assignee: ____________]
-[  ] 2.3 Sugeno Implementation:
-     - Use the same Fuzzified inputs.
-     - Apply Inference (MIN for AND rules).
-     - Defuzzify using Weighted Average (outputs are constants/linear).
-     [Assignee: ____________]
-[  ] 2.4 Output Generation: Save the results! Your dataframe should now 
-     have `Mamdani_Risk_Score` and `Sugeno_Risk_Score` columns.
+PHASE 2: THE FUZZY ENGINE (COMPLETED)
+[ v] 2.1 Rule Base Creation: 15 logical rules defined and documented 
+     (Age, BMI, Glucose, Hypertension, Smoking).
+[ v] 2.2 Mamdani Implementation:
+     - Fuzzified the 5 inputs across 5000+ rows.
+     - Applied Inference (MIN for AND rules, MAX to aggregate).
+     - Defuzzified using the discrete Centroid method.
+[ v] 2.3 Sugeno Implementation:
+     - Applied Inference (MIN for AND rules).
+     - Defuzzified using Zero-Order Weighted Average (outputs are constants).
+[ v] 2.4 Output Generation: Dataframe now has `Mamdani_Risk_Score` 
+     and `Sugeno_Risk_Score` columns.
 
-PHASE 3: EVALUATION & BONUS ROUND (+25 PTS) (SUNDAY, JUNE 14)
-[  ] 3.1 Evaluation (Required): Calculate MSE (Mean Squared Error) or 
-     MAE for Mamdani vs Sugeno against the ground truth 'stroke' column.
-     [Assignee: ____________]
+PHASE 3: EVALUATION & BONUS ROUND (+25 PTS) (MONDAY, JUNE 15 - URGENT)
+[ v] 3.1 Evaluation (Required): Converted continuous risk scores (0-1) to 
+     binary predictions using a 0.5 threshold. Calculated Classification 
+     Accuracy for Mamdani vs Sugeno against the ground truth 'stroke' column.
+     *(CRITICAL FIX APPLIED: Do NOT use MSE/MAE for binary labels!)*
 [  ] 3.2 Deep Learning Bonus (+20): 
      - Build a simple 3-layer Neural Network (Keras or PyTorch).
      - Inputs: The 5 original features + the new `Mamdani_Risk_Score`.
@@ -47,12 +43,13 @@ PHASE 3: EVALUATION & BONUS ROUND (+25 PTS) (SUNDAY, JUNE 14)
        the Stroke Risk % on the web page.
      [Assignee: ____________]
 
-PHASE 4: REPORT & SUBMISSION (MONDAY, JUNE 15 - MORNING)
+PHASE 4: REPORT & SUBMISSION (MONDAY, JUNE 15 - CRUNCH TIME)
 [  ] 4.1 Report Writing (.pdf):
-     - Detail the 15 rules and membership functions.
+     - Detail the 15 rules and membership functions (use text notes!).
      - Show the comparison table (Mamdani vs Sugeno).
      - Discuss advantages/disadvantages (e.g., Sugeno is faster to compute, 
        Mamdani is more intuitive).
+     - MUST INCLUDE: A direct link to the Kaggle dataset source.
      [Assignee: ____________]
 [  ] 4.2 Source Code Clean-up (.ipynb): Ensure all code runs top-to-bottom 
      without errors. Add comments proving you didn't use fuzzy libraries.
