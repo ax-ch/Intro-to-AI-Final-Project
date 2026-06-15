@@ -1,0 +1,18 @@
+1. The "Linguistic" Nature of Numeric Inputs
+
+Concern: Average glucose is a numerical value (e.g., 120), and hypertension is binary (0, 1). How do these qualify as "linguistic"?
+
+Explanation: A distinction must be made between a crisp input and a linguistic variable. In Fuzzy Logic theory, the raw data fed into the system (e.g., an average glucose level of 120 mg/dL) represents a crisp input, which is strictly numerical. This numerical value is mapped to a "linguistic variable" exclusively during the Fuzzification step.
+
+* Glucose: The linguistic variable is "Glucose Level". The associated linguistic terms are "Normal," "Prediabetic," and "Diabetic." The custom trapmf function translates the crisp number (e.g., 120) into degrees of membership for these linguistic concepts (e.g., 0% Normal, 80% Prediabetic, 20% Diabetic). This is a mathematically sound approach.
+* Hypertension (0 and 1): Because this feature is binary, it functions mathematically as a "Singleton" in fuzzy logic. Assigning trimf shapes centered exactly on 0 and 1 effectively integrates a crisp boolean into a continuous fuzzy framework. An academic defense for this design choice is: "Because hypertension exists as a definitive binary in the dataset, the linguistic terms 'Absent' and 'Present' were modeled using highly concentrated triangular membership functions to allow seamless mathematical integration with the continuous variables."
+
+------------------------------------------------------------------------
+2. Using Assumptions for Parameters and Rules
+
+Concern: Is it methodologically sound to use medical assumptions to define the 15 rules and membership shapes?
+
+Explanation: This approach is the standard methodology for classical Fuzzy Logic. Unlike Machine Learning models that train on data to identify patterns, a traditional Fuzzy Inference System operates as an Expert System. It necessitates that rules be defined based on heuristics, domain knowledge, or expert assumptions.
+
+* Labeling the rule base as a "Heuristic Baseline" accurately reflects this academic terminology.
+* Defense strategy for the choice of parameters and rules: "Because traditional fuzzy logic does not inherently learn from data, the parameters and rule base were designed using generalized medical heuristics. The objective was to evaluate how effectively human-defined medical assumptions map to actual predictive outcomes when processed through Mamdani and Sugeno architectures."
