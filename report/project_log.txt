@@ -5,8 +5,8 @@ TOPIC: Stroke Risk Assessment (Mamdani vs Sugeno + DL + Streamlit)
 ====================================================================
 
 PHASE 1: FOUNDATION & DATA PREP (FRIDAY, JUNE 12)
-[  ] 1.1 Folder Setup: Create repo with /data, /notebooks, /app, /report.
-     [Assignee: ____________]
+[ v] 1.1 Folder Setup: Create repo with /data, /notebooks, /app, /report.
+     [Assignee: Axella]
 [  ] 1.2 Data Cleaning: Load 'healthcare-dataset-stroke-data.csv'. 
      - Handle missing BMI values (e.g., fill with mean).
      - Map text to numbers (e.g., gender, smoking status, residence).
