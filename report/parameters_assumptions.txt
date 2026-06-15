@@ -1,0 +1,61 @@
+====================================================================
+PROJECT NOTES: FUZZY LOGIC PARAMETERS & ASSUMPTIONS
+System: Mamdani & Sugeno Implementation (From Scratch)
+====================================================================
+
+1. FUZZIFICATION PARAMETERS (INPUT VARIABLES)
+The parameters below define the shape of the membership functions. 
+Format: Triangle (trimf) = [a, b, c] | Trapezoid (trapmf) = [a, b, c, d]
+
+A. Age (Years)
+* Young [0, 0, 30, 45]: Assumes minimal stroke risk below 30, fading out by 45.
+* Middle [30, 50, 70]: Core middle-age bracket peaks at 50.
+* Senior [55, 70, 100, 100]: Stroke risk accelerates aggressively after 55 and plateaus at maximum severity after 70.
+
+B. Average Glucose Level (mg/dL)
+Rationale based on standard medical thresholds (Fasting/Average):
+* Normal [0, 0, 90, 140]: Normal blood sugar levels safely sit below 100-140.
+* Prediabetic [100, 150, 200]: Transition zone indicating metabolic stress.
+* Diabetic [150, 200, 350, 350]: Levels strictly above 150-200 indicate active diabetes, a major stroke accelerator.
+
+C. BMI (Body Mass Index)
+Rationale based on standard WHO medical BMI ranges:
+* Low/Normal [0, 0, 18.5, 25]: Underweight to healthy weight threshold.
+* Overweight [20, 27.5, 35]: Bridges the gap between normal and obese, peaking precisely in the middle of the overweight range (27.5).
+* Obese [30, 35, 100, 100]: BMI > 30 is clinically obese, plateauing at 35+ (severe obesity).
+
+D. Smoking Status (Mapped Categorical Data)
+Mapped as: Unknown=0, Never=1, Former=2, Smokes=3. 
+* Low [-1, 0, 1, 1.5]: Captures 'Unknown' and 'Never Smoked'.
+* Moderate [1, 2, 3]: Centers perfectly on 'Formerly Smoked' (2).
+* High [2.5, 3, 4, 4]: Isolates active smokers (3).
+
+E. Hypertension (Mapped Binary Data)
+Mapped as: Absent=0, Present=1.
+* Absent [-1, 0, 0.5]: Peaks exactly at 0 (No hypertension).
+* Present [0.5, 1, 2]: Peaks exactly at 1 (Hypertension confirmed).
+
+====================================================================
+2. DEFUZZIFICATION PARAMETERS & LOGIC
+====================================================================
+
+A. SUGENO ZERO-ORDER CONSTANTS
+Because Sugeno uses linear/constant outputs, we map the final risk to fixed scalars between 0 and 1.
+* Low Risk Output (z_low) = 0.1
+* Medium Risk Output (z_med) = 0.5
+* High Risk Output (z_high) = 0.9
+* Calculation Method: Weighted Average. Faster and computationally cheaper than Mamdani.
+
+B. MAMDANI OUTPUT PARAMETERS (CENTROID METHOD)
+Unlike Sugeno, Mamdani requires actual geometric membership functions for the output. The output domain (Risk) is plotted on a continuous scale from 0.0 to 1.0.
+* Risk Low [0, 0, 0.3, 0.5] (Trapmf): Safely anchors at 0, tapering off by 0.5.
+* Risk Medium [0.3, 0.5, 0.7] (Trimf): Centers perfectly at 50% risk.
+* Risk High [0.5, 0.7, 1.0, 1.0] (Trapmf): Anchors at 1.0 (Maximum severity).
+* Calculation Method: Center of Gravity (Centroid). We discretize the 0 to 1 scale into 50 points, clip the shapes based on rule weights, aggregate them via the MAX operator, and calculate the mathematical center of the resulting area.
+
+====================================================================
+3. EVALUATION THRESHOLD PARAMETER
+====================================================================
+
+* Binary Classification Threshold = 0.5
+* Rationale: Because the original dataset label ('stroke') is binary (0 or 1), the continuous Fuzzy Risk Score (0.0 to 1.0) must be converted back to binary to calculate classification metrics like Accuracy. Any Risk Score ≥ 0.5 is classified as a positive stroke prediction (1).
